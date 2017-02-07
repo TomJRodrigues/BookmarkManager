@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {resources: [
 
       {
-        subject: "Functional Programming Basics",
+        subject: "Classes 1 & 2: Functional Programming Basics",
         resources: [
           {
             title: "FunFunFunction Functional Programming Playlist",
@@ -27,18 +27,22 @@ class App extends Component {
 
 
       {
-        subject: "ES6",
+        subject: "Class 3: ES6",
         resources: [
           {
             title: "Kyle Robinson Young ES6 Essentials",
             url: "https://www.youtube.com/watch?v=CozSF5abcTA"
+          },
+          {
+            title: "Var, Let or Const?",
+            url: "https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75#.5h0vad4qh"
           }
         ]
       },
 
 
       {
-        subject: "Intro to React",
+        subject: "Classes 4 & 5: Intro to React",
         resources: [
           {
             title: "Thinking in React",
@@ -51,6 +55,41 @@ class App extends Component {
             url: "https://youtu.be/fd2Cayhez58"
           }
         ]
+      },
+
+      {
+        subject: "Class 6: Events & State",
+        resources: [
+          {
+            title: "Handling Events",
+            url: "https://facebook.github.io/react/docs/handling-events.html"
+          },
+          {
+            title: "React Stateless Functional Components: Nine Wins You Might Have Overlooked",
+            url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.63sbuc4mm"
+          },
+          {
+            title: "Mindspace Tutorial (7-10)",
+            url: "https://www.youtube.com/watch?v=OcM__8q6p4c&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=8"
+          },
+          {
+            title: "Understanding Bind",
+            url: "https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/"
+          },
+          {
+            title: "Learncode Academy",
+            url: "https://www.youtube.com/watch?v=_D1JGNidMr4&feature=youtu.be"
+          }
+        ]
+      },
+
+      {
+        subject: "Satire & Jokes",
+        resources: [
+          {
+            title: "How it Feels to Learn Javascript in 2016",
+            url: "https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.d8l50z9ig"}
+        ]
       }
 
     ]}
@@ -59,10 +98,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        Parent Component
-        <Subject subject={this.state.resources[0].subject}/>
-        <Subject subject={this.state.resources[1].subject}/>
-        <Subject subject={this.state.resources[2].subject}/>
+        {
+          this.state.resources.map((resource) => {
+            return(
+              <Subject items={resource}/>
+            )
+          })
+        }
       </div>
     );
   }
