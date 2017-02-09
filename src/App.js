@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import Subject from './Subject.js';
+import Header from './Header.js';
+import Navbar from './Navbar.js';
+import Footer from './Footer.js';
 
 class App extends Component {
   constructor() {
@@ -99,11 +102,24 @@ class App extends Component {
     return (
       <div>
         {
+          <Header />
+        }
+        {
+          this.state.resources.map((resource) => {
+            return(
+              <Navbar items={resource}/>
+            )
+          })
+        }
+        {
           this.state.resources.map((resource) => {
             return(
               <Subject items={resource}/>
             )
           })
+        }
+        {
+          <Footer />
         }
       </div>
     );
