@@ -102,10 +102,10 @@ class App extends Component {
     return (
       <div>
         {
-          <Header />
+//          <Header />
         }
         {
-          this.state.resources.map((resource) => {
+         this.state.resources.map((resource) => {
             return(
               <Navbar items={resource}/>
             )
@@ -119,7 +119,7 @@ class App extends Component {
           })
         }
         {
-          <Footer />
+//          <Footer />
         }
       </div>
     );
