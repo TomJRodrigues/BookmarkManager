@@ -5,7 +5,6 @@ export default class Subject extends Component {
     super(props)
 
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
 
     this.state = {
       newResourceTitle: "Awesome React Tutorial",
@@ -18,12 +17,6 @@ export default class Subject extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
-
-  handleCheck(event) {
-    this.setState(prevState => ({
-      hasBeenRead: !prevState.hasBeenRead
-    }));
   }
 
   render() {
@@ -49,15 +42,6 @@ export default class Subject extends Component {
           URL to enter:
             <input type="text" name="newResourceUrl" value={this.state.newResourceUrl} onChange={this.handleInputChange} size="30" />
           </label>
-          <br/>
-          <select>
-            <option selected value="Great Title">Great Title</option>
-            <option value="Okay Title">Okay Title</option>
-            <option value="Lame Title">Lame Ttile</option>
-            <option value="Worst Title">Worst Title</option>
-          </select>
-          <br/>
-          <input type="checkbox" name="hasBeenRead" checked={this.state.hasBeenRead} onChange={this.handleCheck} />
           <br/>
           <input type="submit" value="Submit" />
         </form>
