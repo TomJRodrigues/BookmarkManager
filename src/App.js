@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addNewResource = this.addNewResource.bind(this);
 
     this.state = {resources: [
 
@@ -100,14 +100,10 @@ class App extends Component {
     ]}
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    let numberOfResources = this.state.resources.length;
-    console.log(numberOfResources);
-    console.log("Test");
-    this.setState({
-      
-    });
+  addNewResource(subject, resource) {
+    const tempState = this.state;
+    tempState.resources[subject].resources.push(resource);
+    this.setState(tempState);
   }
 
   render() {
@@ -117,16 +113,16 @@ class App extends Component {
           <Header />
         }
         {
-         this.state.resources.map((resource, idx) => {
+         this.state.resources.map((resource) => {
             return(
-              <Navbar items={resource} key={idx} />
+              <Navbar items={resource} />
             )
           })
         }
         {
-          this.state.resources.map((resource, idx) => {
+          this.state.resources.map((resource, index) => {
             return(
-              <Subject items={resource} key={idx} handleSubmit={this.handleSubmit} />
+              <Subject index={index} addResource={this.addNewResource} items={resource} />
 
             )
           })
