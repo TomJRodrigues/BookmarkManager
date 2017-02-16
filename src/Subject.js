@@ -4,57 +4,63 @@ export default class Subject extends Component {
   constructor(props) {
     super(props)
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
 
     this.state = {
-      numberOfClicks: 0,
-      value: "URL"
+      newResourceTitle: "Awesome React Tutorial",
+      newResourceUrl: "http://",
+      hasBeenRead: false,
     }
   }
 
-  // event handlers
-
-  handleClick() {
+  handleInputChange(event) {
     this.setState({
-      numberOfClicks: this.state.numberOfClicks + 1
+      [event.target.name]: event.target.value
     });
   }
 
-  handleChange(event) {
-    this.setState({
-      value: event.target.value
-    });
-    let numberOfResources = this.props.items.resources.length
-    this.props.items.resources[numberOfResources] = {
-      title: this.state.value,
-      url: "httpwaht"
-    }
-    console.log(this.props.items.resources[0].title)
-    console.log(numberOfResources)
+  handleCheck(event) {
+    this.setState(prevState => ({
+      hasBeenRead: !prevState.hasBeenRead
+    }));
   }
 
   render() {
     return(
       <div>
-      	<h2 onClick={() => this.handleClick()}>{this.props.items.subject}</h2> 
-        Number of clicks: {this.state.numberOfClicks}
-        <hr/>
-        <form>
-          <label>
-          URL to enter:
-            <input type="text" name="URL" value={this.state.value} onChange={this.handleChange} />
-          </label>
-        </form>
+      	<h2>{this.props.items.subject}</h2> 
       	<ul>
-      		{this.props.items.resources.map((resource) => {
+      		{this.props.items.resources.map((resource, idx) => {
       			return(
-      				<li>
+      				<li key={idx}>
       					<a href={resource.url}>{resource.title}</a>
       				</li>
       			)}
 					)}
       	</ul>
+        <form onSubmit={this.props.handleSubmit}>
+          <label>
+          Title to enter:
+            <input type="text" name="newResourceTitle" value={this.state.newResourceTitle} onChange={this.handleInputChange} size="30" />
+          </label>
+          <br/>
+          <label>
+          URL to enter:
+            <input type="text" name="newResourceUrl" value={this.state.newResourceUrl} onChange={this.handleInputChange} size="30" />
+          </label>
+          <br/>
+          <select>
+            <option selected value="Great Title">Great Title</option>
+            <option value="Okay Title">Okay Title</option>
+            <option value="Lame Title">Lame Ttile</option>
+            <option value="Worst Title">Worst Title</option>
+          </select>
+          <br/>
+          <input type="checkbox" name="hasBeenRead" checked={this.state.hasBeenRead} onChange={this.handleCheck} />
+          <br/>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
     )
   }

@@ -8,6 +8,8 @@ class App extends Component {
   constructor() {
     super();
 
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {resources: [
 
       {
@@ -98,28 +100,39 @@ class App extends Component {
     ]}
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    let numberOfResources = this.state.resources.length;
+    console.log(numberOfResources);
+    console.log("Test");
+    this.setState({
+      
+    });
+  }
+
   render() {
     return (
       <div>
         {
-//          <Header />
+          <Header />
         }
         {
-         this.state.resources.map((resource) => {
+         this.state.resources.map((resource, idx) => {
             return(
-              <Navbar items={resource}/>
+              <Navbar items={resource} key={idx} />
             )
           })
         }
         {
-          this.state.resources.map((resource) => {
+          this.state.resources.map((resource, idx) => {
             return(
-              <Subject items={resource}/>
+              <Subject items={resource} key={idx} handleSubmit={this.handleSubmit} />
+
             )
           })
         }
         {
-//          <Footer />
+          <Footer />
         }
       </div>
     );
