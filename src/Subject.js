@@ -8,12 +8,16 @@ export default class Subject extends Component {
     // function binding
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
 
     this.state = {
       title: "Awesome React Tutorial",
       url: "http://",
+      read: false,
     }
   }
+
+  // functions
 
   handleSubmit(event) {         // packages event input into object notation, calls bound function from app.js
     event.preventDefault();
@@ -25,9 +29,25 @@ export default class Subject extends Component {
   }
 
   handleInputChange(event) {    // allows typing in input fields
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
+  }
+
+  handleCheck(event) {
+    console.log(event.target);
+    console.log(event.target.value);
+    console.log(this.props.items.resources);
+    const checkStatus = {
+      title: this.props.items.resources[0].title,
+      url: this.props.items.resources[0].url,
+      read: !this.props.items.resources[0].read,
+    };
+    this.props.changeCheckStatus(this.props.index, checkStatus);
+    console.log(checkStatus);
   }
 
   render() {
@@ -35,10 +55,10 @@ export default class Subject extends Component {
       <div>
       	<h2>{this.props.items.subject}</h2> 
       	<ul>
-      		{this.props.items.resources.map((resource) => {
+      		{this.props.items.resources.map((resource, index) => {
       			return(
-      				<li>
-      					<a href={resource.url}>{resource.title}</a>
+      				<li key={index} >
+      					Read?:<input type="checkbox" name="read" checked={this.props.items.resources[index].read} onChange={this.handleCheck} ></input><a href={resource.url}>{resource.title}</a>
       				</li>
       			)}
 					)}

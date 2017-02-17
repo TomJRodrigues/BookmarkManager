@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Subject from './Subject.js';
-import Header from './Header.js';
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
+// import Header from './Header.js';
+// import Navbar from './Navbar.js';
+// import Footer from './Footer.js';
 
 class App extends Component {
   constructor() {
     super();
 
     this.addNewResource = this.addNewResource.bind(this);
+    this.changeCheckStatus = this.changeCheckStatus.bind(this);
 
     this.state = {resources: [
 
@@ -17,15 +18,18 @@ class App extends Component {
         resources: [
           {
             title: "FunFunFunction Functional Programming Playlist",
-            url: "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84"
+            url: "https://www.youtube.com/watch?v=BMUiFMZr7vk&list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84",
+            read: true,
           },
           {
             title: "FunFunFunction var, let, and const",
-            url: "https://www.youtube.com/watch?v=sjyJBL5fkp8"
+            url: "https://www.youtube.com/watch?v=sjyJBL5fkp8",
+            read: false,
           },
           {
             title: "FunFunFunction arrow functions",
-            url: "https://www.youtube.com/watch?v=6sQDTgOqh-I"
+            url: "https://www.youtube.com/watch?v=6sQDTgOqh-I",
+            read: true,
           }
         ]
       },
@@ -36,11 +40,13 @@ class App extends Component {
         resources: [
           {
             title: "Kyle Robinson Young ES6 Essentials",
-            url: "https://www.youtube.com/watch?v=CozSF5abcTA"
+            url: "https://www.youtube.com/watch?v=CozSF5abcTA",
+            read: false,
           },
           {
             title: "Var, Let or Const?",
-            url: "https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75#.5h0vad4qh"
+            url: "https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75#.5h0vad4qh",
+            read: false,
           }
         ]
       },
@@ -51,13 +57,18 @@ class App extends Component {
         resources: [
           {
             title: "Thinking in React",
-            url: "https://facebook.github.io/react/docs/thinking-in-react.html"},
+            url: "https://facebook.github.io/react/docs/thinking-in-react.html",
+            read: false,
+          },
           {
             title: "Mindspace React Tutorial",
-            url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS"},
+            url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS",
+            read: false,
+          },
           {
             title: "LearnCode Academy React Tutorial",
-            url: "https://youtu.be/fd2Cayhez58"
+            url: "https://youtu.be/fd2Cayhez58",
+            read: false,
           }
         ]
       },
@@ -67,23 +78,28 @@ class App extends Component {
         resources: [
           {
             title: "Handling Events",
-            url: "https://facebook.github.io/react/docs/handling-events.html"
+            url: "https://facebook.github.io/react/docs/handling-events.html",
+            read: false,
           },
           {
             title: "React Stateless Functional Components: Nine Wins You Might Have Overlooked",
-            url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.63sbuc4mm"
+            url: "https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.63sbuc4mm",
+            read: false,
           },
           {
             title: "Mindspace Tutorial (7-10)",
-            url: "https://www.youtube.com/watch?v=OcM__8q6p4c&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=8"
+            url: "https://www.youtube.com/watch?v=OcM__8q6p4c&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS&index=8",
+            read: false,
           },
           {
             title: "Understanding Bind",
-            url: "https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/"
+            url: "https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/",
+            read: false,
           },
           {
             title: "Learncode Academy",
-            url: "https://www.youtube.com/watch?v=_D1JGNidMr4&feature=youtu.be"
+            url: "https://www.youtube.com/watch?v=_D1JGNidMr4&feature=youtu.be",
+            read: false,
           }
         ]
       },
@@ -93,7 +109,9 @@ class App extends Component {
         resources: [
           {
             title: "How it Feels to Learn Javascript in 2016",
-            url: "https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.d8l50z9ig"}
+            url: "https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.d8l50z9ig",
+            read: false,
+          }
         ]
       }
 
@@ -106,29 +124,27 @@ class App extends Component {
     this.setState(tempState);
   }
 
+  changeCheckStatus(subject, resource) {          // allows checking box
+    const tempState = this.state;
+    console.log(subject);
+    console.log(tempState.resource[subject]);
+    console.log(tempState.resources[0]);
+    console.log(tempState.resources[subject].resources[subject]);
+    console.log(tempState.resources[0].resources[0]);
+    tempState.resources[subject].resources[subject].read = false;
+    this.setState(tempState);
+  }
+
   render() {
     return (
       <div>
         {
-          <Header />
-        }
-        {
-         this.state.resources.map((resource) => {
-            return(
-              <Navbar items={resource} />
-            )
-          })
-        }
-        {
           this.state.resources.map((resource, index) => {
             return(
-              <Subject index={index} addResource={this.addNewResource} items={resource} />
+              <Subject key={index} addResource={this.addNewResource} changeCheckStatus={this.changeCheckStatus} items={resource}  />
 
             )
           })
-        }
-        {
-          <Footer />
         }
       </div>
     );
@@ -136,3 +152,19 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+        // {
+        //   <Header />
+        // }
+        // {
+        //  this.state.resources.map((resource, index) => {
+        //     return(
+        //       <Navbar key={index} items={resource} />
+        //     )
+        //   })
+        // }
+        // {
+        //   <Footer />
+        // }
