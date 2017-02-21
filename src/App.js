@@ -11,9 +11,11 @@ class App extends Component {
     this.addNewResource = this.addNewResource.bind(this);
     this.changeCheckStatus = this.changeCheckStatus.bind(this);
     this.addNewSubject = this.addNewSubject.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
 
-    this.state = {resources: [
-
+    this.state = {
+      subject: "Add a New Subject",
+      resources: [
       {
         subject: "Classes 1 & 2: Functional Programming Basics",
         resources: [
@@ -121,7 +123,13 @@ class App extends Component {
 
   addNewSubject(event) {
     event.preventDefault();
-    console.log("Ouch");
+    const tempState = this.state;
+    const newSubject = {
+      subject: this.state.subject,
+      resources: [],
+    }
+    tempState.resources.push(newSubject);
+    this.setState(tempState);
   }
 
   addNewResource(subject, resource) {
@@ -130,14 +138,18 @@ class App extends Component {
     this.setState(tempState);
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+    this.setState({
+      [name]: value
+    });
+  }
+
   changeCheckStatus(subject, resource) {          // allows checking box
     const tempState = this.state;
-    console.log(subject);
-    console.log(tempState.resource[subject]);
-    console.log(tempState.resources[0]);
-    console.log(tempState.resources[subject].resources[subject]);
-    console.log(tempState.resources[0].resources[0]);
-    tempState.resources[subject].resources[subject].read = false;
+    tempState.resources[subject].resources[subject].read = !tempState.resources[subject].resources[subject].read;
     this.setState(tempState);
   }
 
@@ -145,12 +157,26 @@ class App extends Component {
     return (
       <div>
         <div>
-          <button onClick={this.addNewSubject}>New Subject</button>
+          <form htmlFor="subjectButton">
+            <input 
+              id="subjectButton" 
+              type="text" name="subject" 
+              onChange={this.handleInputChange} 
+              value={this.state.subject} 
+            />
+            <button onClick={this.addNewSubject}>New Subject</button>
+          </form> 
         </div>
         {
           this.state.resources.map((resource, index) => {
             return(
-              <Subject index={index} addResource={this.addNewResource} changeCheckStatus={this.changeCheckStatus} items={resource}  />
+              <Subject 
+                index={index} 
+                addResource={this.addNewResource}
+                handleInputChange={this.handleInputChange}
+                changeCheckStatus={this.changeCheckStatus} 
+                items={resource}  
+                />
 
             )
           })

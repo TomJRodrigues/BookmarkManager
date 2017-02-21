@@ -38,16 +38,10 @@ export default class Subject extends Component {
   }
 
   handleCheck(event) {
-    console.log(event.target);
-    console.log(event.target.value);
-    console.log(this.props.items.resources);
     const checkStatus = {
-      title: this.props.items.resources[0].title,
-      url: this.props.items.resources[0].url,
       read: !this.props.items.resources[0].read,
     };
     this.props.changeCheckStatus(this.props.index, checkStatus);
-    console.log(checkStatus);
   }
 
   render() {
@@ -58,7 +52,13 @@ export default class Subject extends Component {
       		{this.props.items.resources.map((resource, index) => {
       			return(
       				<li>
-      					Read?:<input type="checkbox" name="read" index={index} checked={this.props.items.resources[index].read} onChange={this.handleCheck} ></input><a href={resource.url}>{resource.title}</a>
+      					Read?:<input 
+                        type="checkbox" 
+                        name="read" 
+                        index={index} 
+                        checked={this.props.items.resources[index].read} 
+                        onChange={this.props.handleInputChange} 
+                        /><a href={resource.url}>{resource.title}</a>
       				</li>
       			)}
 					)}
