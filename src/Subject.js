@@ -28,7 +28,7 @@ export default class Subject extends Component {
     this.props.addResource(this.props.index, newResource);
   }
 
-  handleInputChange(event) {    // allows typing in input fields
+  handleInputChange(event) {    // allows typing in input fields and checking boxes
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -57,8 +57,8 @@ export default class Subject extends Component {
       	<ul>
       		{this.props.items.resources.map((resource, index) => {
       			return(
-      				<li key={index} >
-      					Read?:<input type="checkbox" name="read" checked={this.props.items.resources[index].read} onChange={this.handleCheck} ></input><a href={resource.url}>{resource.title}</a>
+      				<li>
+      					Read?:<input type="checkbox" name="read" index={index} checked={this.props.items.resources[index].read} onChange={this.handleCheck} ></input><a href={resource.url}>{resource.title}</a>
       				</li>
       			)}
 					)}

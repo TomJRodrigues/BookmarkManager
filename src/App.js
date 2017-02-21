@@ -10,6 +10,7 @@ class App extends Component {
 
     this.addNewResource = this.addNewResource.bind(this);
     this.changeCheckStatus = this.changeCheckStatus.bind(this);
+    this.addNewSubject = this.addNewSubject.bind(this);
 
     this.state = {resources: [
 
@@ -118,6 +119,11 @@ class App extends Component {
     ]}
   }
 
+  addNewSubject(event) {
+    event.preventDefault();
+    console.log("Ouch");
+  }
+
   addNewResource(subject, resource) {
     const tempState = this.state;
     tempState.resources[subject].resources.push(resource);
@@ -138,10 +144,13 @@ class App extends Component {
   render() {
     return (
       <div>
+        <div>
+          <button onClick={this.addNewSubject}>New Subject</button>
+        </div>
         {
           this.state.resources.map((resource, index) => {
             return(
-              <Subject key={index} addResource={this.addNewResource} changeCheckStatus={this.changeCheckStatus} items={resource}  />
+              <Subject index={index} addResource={this.addNewResource} changeCheckStatus={this.changeCheckStatus} items={resource}  />
 
             )
           })
@@ -161,7 +170,7 @@ export default App;
         // {
         //  this.state.resources.map((resource, index) => {
         //     return(
-        //       <Navbar key={index} items={resource} />
+        //       <Navbar index={index} items={resource} />
         //     )
         //   })
         // }
