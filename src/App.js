@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Subject from './Subject.js';
+import AddSubject from './AddSubject.js';
 // import Header from './Header.js';
 // import Navbar from './Navbar.js';
 // import Footer from './Footer.js';
@@ -14,7 +15,7 @@ class App extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.state = {
-      subject: "Add a New Subject",
+      //subject: "Add a New Subject",
       resources: [
       {
         subject: "Classes 1 & 2: Functional Programming Basics",
@@ -121,14 +122,15 @@ class App extends Component {
     ]}
   }
 
-  addNewSubject(event) {
-    event.preventDefault();
+  addNewSubject(subject) {
     const tempState = this.state;
-    const newSubject = {
-      subject: this.state.subject,
-      resources: [],
-    }
-    tempState.resources.push(newSubject);
+    // const newSubject = {
+    //   subject: this.state.subject,
+    //   resources: [],
+    // }
+    // tempState.resources.push(newSubject);
+    // this.setState(tempState);
+    tempState.resources.push(subject);
     this.setState(tempState);
   }
 
@@ -157,15 +159,9 @@ class App extends Component {
     return (
       <div>
         <div>
-          <form htmlFor="subjectButton">
-            <input 
-              id="subjectButton" 
-              type="text" name="subject" 
-              onChange={this.handleInputChange} 
-              value={this.state.subject} 
-            />
-            <button onClick={this.addNewSubject}>New Subject</button>
-          </form> 
+          <AddSubject 
+            addNewSubject={this.addNewSubject}
+          />
         </div>
         {
           this.state.resources.map((resource, index) => {
@@ -188,6 +184,15 @@ class App extends Component {
 
 export default App;
 
+          // <form htmlFor="subjectButton">
+            // <input 
+            //   id="subjectButton" 
+            //   type="text" name="subject" 
+            //   onChange={this.handleInputChange} 
+            //   value={this.state.subject} 
+            //>
+            //<button onClick={this.addNewSubject}>New Subject</button>
+          //</form> 
 
 
         // {

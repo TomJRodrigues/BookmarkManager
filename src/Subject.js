@@ -49,6 +49,7 @@ export default class Subject extends Component {
       <div>
       	<h2>{this.props.items.subject}</h2> 
       	<ul>
+          {console.log(this.props)}
       		{this.props.items.resources.map((resource, index) => {
       			return(
       				<li>
