@@ -9,7 +9,6 @@ class App extends Component {
   constructor() {
     super();
 
-    this.changeCheckStatus = this.changeCheckStatus.bind(this);
     this.addNewResource = this.addNewResource.bind(this);
     this.addNewSubject = this.addNewSubject.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -140,12 +139,6 @@ class App extends Component {
     this.setState({
       [name]: value
     });
-  }
-
-  changeCheckStatus(subject, resource) {
-    const tempState = this.state;
-    tempState.resources[subject].resources[subject].read = !tempState.resources[subject].resources[subject].read;
-    this.setState(tempState);
   }
 
   render() {

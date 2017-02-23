@@ -8,7 +8,7 @@ export default class Subject extends Component {
     // function binding
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleCheck = this.handleCheck.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
     this.state = {
       title: "Awesome React Tutorial",
@@ -35,11 +35,9 @@ export default class Subject extends Component {
     });
   }
 
-  handleCheck(event) {
-    const checkStatus = {
-      read: !this.props.items.resources[0].read,
-    };
-    this.props.changeCheckStatus(this.props.index, checkStatus);
+  handleDelete(event) {
+    event.preventDefault();
+    console
   }
 
   render() {
@@ -50,13 +48,9 @@ export default class Subject extends Component {
       		{this.props.items.resources.map((resource, index) => {
       			return(
       				<li>
-      					Read?:<input 
-                        type="checkbox" 
-                        name="read" 
-                        index={index} 
-                        checked={this.props.items.resources[index].read} 
-                        onChange={this.props.handleInputChange} 
-                        /><a href={resource.url}>{resource.title}</a>
+                <a href={resource.url}>
+                {resource.title}</a>
+                <button onClick={this.handleDelete}>Delete</button>
       				</li>
       			)}
 					)}
