@@ -9,13 +9,12 @@ class App extends Component {
   constructor() {
     super();
 
-    this.addNewResource = this.addNewResource.bind(this);
     this.changeCheckStatus = this.changeCheckStatus.bind(this);
+    this.addNewResource = this.addNewResource.bind(this);
     this.addNewSubject = this.addNewSubject.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.state = {
-      //subject: "Add a New Subject",
       resources: [
       {
         subject: "Classes 1 & 2: Functional Programming Basics",
@@ -122,25 +121,19 @@ class App extends Component {
     ]}
   }
 
-  addNewSubject(subject) {
+  addNewSubject(subject) {               // receives new subject from AddSubject.js and sets state
     const tempState = this.state;
-    // const newSubject = {
-    //   subject: this.state.subject,
-    //   resources: [],
-    // }
-    // tempState.resources.push(newSubject);
-    // this.setState(tempState);
     tempState.resources.push(subject);
     this.setState(tempState);
   }
 
-  addNewResource(subject, resource) {
+  addNewResource(subject, resource) {    // receives new resource from Subject.js and sets state
     const tempState = this.state;
     tempState.resources[subject].resources.push(resource);
     this.setState(tempState);
   }
 
-  handleInputChange(event) {
+  handleInputChange(event) {            // allows typing and checkbox-checking
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -149,7 +142,7 @@ class App extends Component {
     });
   }
 
-  changeCheckStatus(subject, resource) {          // allows checking box
+  changeCheckStatus(subject, resource) {
     const tempState = this.state;
     tempState.resources[subject].resources[subject].read = !tempState.resources[subject].resources[subject].read;
     this.setState(tempState);
