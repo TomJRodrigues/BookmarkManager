@@ -17,8 +17,6 @@ export default class Subject extends Component {
     }
   }
 
-  // functions
-
   handleSubmit(event) {         // packages event input into object notation, calls bound function from app.js
     event.preventDefault();
     const newResource = {
