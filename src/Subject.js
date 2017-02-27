@@ -35,8 +35,7 @@ export default class Subject extends Component {
     });
   }
 
-  deleteResourceHelper(resourceIndex) {
-    console.log("not deleted yet");
+  deleteResourceHelper(resourceIndex) {  // passes resourceIndex and subjectIndex up to parent
     this.props.deleteResource(resourceIndex, this.props.index);
   }
 

@@ -133,12 +133,9 @@ class App extends Component {
     this.setState(tempState);
   }
 
-  deleteResource(index, newIndex) {
-    console.log("made it here!");
-    console.log("deleteResource index " + index);
-    console.log(newIndex);
+  deleteResource(resourceIndex, subjectIndex) { // receives indices and updates state
     const tempState = this.state;
-    tempState.resources[newIndex].resources.splice(index, 1);
+    tempState.resources[subjectIndex].resources.splice(resourceIndex, 1);
     this.setState(tempState);
   }
 
