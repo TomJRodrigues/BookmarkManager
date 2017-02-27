@@ -12,7 +12,6 @@ class AddSubject extends Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-
   handleSubmit(event) {         // packages event input into object notation, calls bound function from app.js
     event.preventDefault();
     const newSubject = {

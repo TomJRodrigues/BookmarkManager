@@ -10,6 +10,7 @@ class App extends Component {
     super();
 
     this.addNewResource = this.addNewResource.bind(this);
+    this.deleteResource = this.deleteResource.bind(this);
     this.addNewSubject = this.addNewSubject.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
@@ -132,6 +133,15 @@ class App extends Component {
     this.setState(tempState);
   }
 
+  deleteResource(index, newIndex) {
+    console.log("made it here!");
+    console.log("deleteResource index " + index);
+    console.log(newIndex);
+    const tempState = this.state;
+    tempState.resources[newIndex].resources.splice(index, 1);
+    this.setState(tempState);
+  }
+
   handleInputChange(event) {            // allows typing and checkbox-checking
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -155,11 +165,11 @@ class App extends Component {
               <Subject 
                 index={index} 
                 addResource={this.addNewResource}
+                deleteResource={this.deleteResource}
                 handleInputChange={this.handleInputChange}
                 changeCheckStatus={this.changeCheckStatus} 
                 items={resource}  
                 />
-
             )
           })
         }
@@ -169,28 +179,3 @@ class App extends Component {
 }
 
 export default App;
-
-          // <form htmlFor="subjectButton">
-            // <input 
-            //   id="subjectButton" 
-            //   type="text" name="subject" 
-            //   onChange={this.handleInputChange} 
-            //   value={this.state.subject} 
-            //>
-            //<button onClick={this.addNewSubject}>New Subject</button>
-          //</form> 
-
-
-        // {
-        //   <Header />
-        // }
-        // {
-        //  this.state.resources.map((resource, index) => {
-        //     return(
-        //       <Navbar index={index} items={resource} />
-        //     )
-        //   })
-        // }
-        // {
-        //   <Footer />
-        // }

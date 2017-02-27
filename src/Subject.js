@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import Resource from './Resource.js';
 
 export default class Subject extends Component {
   constructor(props) {
     super(props)
 
-
     // function binding
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
+    this.deleteResourceHelper = this.deleteResourceHelper.bind(this);
 
     this.state = {
       title: "Awesome React Tutorial",
@@ -35,26 +35,28 @@ export default class Subject extends Component {
     });
   }
 
-  handleDelete(event) {
-    event.preventDefault();
-    console
+  deleteResourceHelper(resourceIndex) {
+    console.log("not deleted yet");
+    this.props.deleteResource(resourceIndex, this.props.index);
   }
 
   render() {
     return(
       <div>
-      	<h2>{this.props.items.subject}</h2> 
-      	<ul>
-      		{this.props.items.resources.map((resource, index) => {
-      			return(
-      				<li>
-                <a href={resource.url}>
-                {resource.title}</a>
-                <button onClick={this.handleDelete}>Delete</button>
-      				</li>
-      			)}
-					)}
-      	</ul>
+      	<h2>{this.props.items.subject}</h2>
+        <ul>
+          {this.props.items.resources.map((resource, index) => {
+            return (
+              <Resource
+                index={index}
+                deleteResourceHelper={this.deleteResourceHelper}
+                items={this.items}
+                title={resource.title}
+                url={resource.url}
+              />
+            )}
+          )}
+        </ul>
         <form>
           <label htmlFor="title">
           Title to enter:
@@ -71,5 +73,4 @@ export default class Subject extends Component {
       </div>
     )
   }
-  
 }
