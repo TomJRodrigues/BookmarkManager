@@ -8,11 +8,11 @@ export default class Header extends Component {
   // event handlers
 
   render() {
-  	let title = "Bookmark Manager"
-    let inlineStyle = {color: "red"};
+  	let title = "React Class Bookmark Manager"
     return(
       <div>
-      	<h1 style={inlineStyle}>{title}</h1>
+      	<h1>{title}</h1>
+        <h6><a href="https://github.com/TomJRodrigues">Developed by Tom Rodrigues</a></h6>
       </div>
     )
   }

@@ -11,7 +11,6 @@ export default class Resource extends Component {
 
   handleDelete(event) {
     event.preventDefault();
-    console.log("working");
     this.props.deleteResourceHelper(this.props.index);
   }
 
@@ -20,7 +19,7 @@ export default class Resource extends Component {
       <li>
         <a href={this.props.url}>
         {this.props.title}</a>
-        <button onClick={this.handleDelete}>Delete Resource</button>
+        <button className="btn btn-xs btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>
     )
   }

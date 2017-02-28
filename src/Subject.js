@@ -67,7 +67,7 @@ export default class Subject extends Component {
             <input type="text" name="url" id="url" value={this.state.url} onChange={this.handleInputChange} size="30" />
           </label>
           <br/>
-          <button onClick={this.handleSubmit}>Add Resource</button>
+          <button className="btn btn-sm btn-primary" onClick={this.handleSubmit}>Add Resource</button>
         </form>
       </div>
     )

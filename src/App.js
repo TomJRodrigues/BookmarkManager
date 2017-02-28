@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Subject from './Subject.js';
 import AddSubject from './AddSubject.js';
-// import Header from './Header.js';
-// import Navbar from './Navbar.js';
-// import Footer from './Footer.js';
+import Header from './Header.js';
 
 class App extends Component {
   constructor() {
@@ -150,7 +148,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <Header />
         <div>
           <AddSubject 
             addNewSubject={this.addNewSubject}

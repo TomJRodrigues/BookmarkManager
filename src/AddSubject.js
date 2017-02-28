@@ -41,7 +41,7 @@ class AddSubject extends Component {
             onChange={this.handleInputChange} 
             value={this.state.subject} 
           />
-          <button onClick={this.handleSubmit}>New Subject</button>
+          <button className="btn btn-sm btn-primary" onClick={this.handleSubmit}>New Subject</button>
         </form> 
 			</div>
 		);
