@@ -15,7 +15,7 @@ class App extends Component {
     this.state = {
       resources: [
       {
-        subject: "Classes 1 & 2: Functional Programming Basics",
+        subject: "Functional Programming Basics",
         resources: [
           {
             title: "FunFunFunction Functional Programming Playlist",
@@ -37,7 +37,7 @@ class App extends Component {
 
 
       {
-        subject: "Class 3: ES6",
+        subject: "ES6",
         resources: [
           {
             title: "Kyle Robinson Young ES6 Essentials",
@@ -54,7 +54,7 @@ class App extends Component {
 
 
       {
-        subject: "Classes 4 & 5: Intro to React",
+        subject: "Intro to React",
         resources: [
           {
             title: "Thinking in React",
@@ -75,7 +75,7 @@ class App extends Component {
       },
 
       {
-        subject: "Class 6: Events & State",
+        subject: "Events & State",
         resources: [
           {
             title: "Handling Events",
@@ -102,6 +102,48 @@ class App extends Component {
             url: "https://www.youtube.com/watch?v=_D1JGNidMr4&feature=youtu.be",
             read: false,
           }
+        ]
+      },
+
+      {
+        subject: "Forms",
+        resources: [
+          {
+            title: "Forms",
+            url: "https://facebook.github.io/react/docs/forms.html",
+            read: false,
+          },
+          {
+            title: "React for Everyone: Controlled Inputs",
+            url: "https://www.youtube.com/watch?v=BvtQMxekmH0",
+            read: false,
+          }
+        ]
+      },
+
+      {
+        subject: "Component Communication & Lifecycle",
+        resources: [
+          {
+            title: "ReactJS Basics Series #11-14",
+            url: "https://www.youtube.com/watch?v=JPT3bFIwJYA&list=PL55RiY5tL51oyA8euSROLjMFZbXaV7skS",
+            read: false,
+          },
+          {
+            title: "Lifecycle",
+            url: "https://facebook.github.io/react/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class",
+            read: false,
+          },
+          {
+            title: "React Components",
+            url: "https://facebook.github.io/react/docs/react-component.html",
+            read: false,
+          },
+          {
+            title: "Lifecycle Use Cases",
+            url: "http://stackoverflow.com/questions/38929991/what-are-typical-use-cases-for-react-lifecycle-methods-like-componentwillreceive",
+            read: false,
+          },
         ]
       },
 
