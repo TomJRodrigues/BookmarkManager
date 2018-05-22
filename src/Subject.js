@@ -11,8 +11,8 @@ export default class Subject extends Component {
     this.deleteResourceHelper = this.deleteResourceHelper.bind(this);
 
     this.state = {
-      title: "Awesome React Tutorial",
-      url: "http://",
+      title: "",
+      url: "",
       read: false,
     }
   }
@@ -59,12 +59,12 @@ export default class Subject extends Component {
         <form>
           <label htmlFor="title">
           Title to enter:
-            <input type="text" name="title" id="title" value={this.state.title} onChange={this.handleInputChange} size="30" />
+            <input type="text" name="title" id="title" value={this.state.title} onChange={this.handleInputChange} size="30" placeholder="Awesome React Tutorial"/>
           </label>
           <br/>
           <label htmlFor="url">
           URL to enter:
-            <input type="text" name="url" id="url" value={this.state.url} onChange={this.handleInputChange} size="30" />
+            <input type="text" name="url" id="url" value={this.state.url} onChange={this.handleInputChange} size="30" placeholder="http://" />
           </label>
           <br/>
           <button className="btn btn-sm btn-primary" onClick={this.handleSubmit}>Add Resource</button>

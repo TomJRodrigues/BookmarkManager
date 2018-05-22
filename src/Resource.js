@@ -19,7 +19,7 @@ export default class Resource extends Component {
       <li>
         <a href={this.props.url}>
         {this.props.title}</a>
-        <button className="btn btn-xs btn-danger" onClick={this.handleDelete}>Delete</button>
+        <button className="btn btn-sm btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>
     )
   }

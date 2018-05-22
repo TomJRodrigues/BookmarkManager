@@ -148,6 +148,32 @@ class App extends Component {
       },
 
       {
+        subject: "Styling the React Way(s)",
+        resources: [
+          {
+            title: "ReactNL 2016 Max Stoiber - Styling React.JS applications",
+            url: "https://www.youtube.com/watch?v=19gqsBc_Cx0",
+            read: false,
+          },
+          {
+            title: "Michael Chan - Inline Styles: themes, media queries, contexts, & when it's best to use CSS",
+            url: "https://www.youtube.com/watch?v=ERB1TJBn32c&t=1545s",
+            read: false,
+          },
+          {
+            title: "Glen Maddern - Styling React Apps with Styled Components",
+            url: "https://www.youtube.com/watch?v=qu4U7lwZTRI",
+            read: false,
+          },
+        ]
+      },
+
+      {
+        subject: "Odds and Ends: PropTypes, Refs, Keys, and More",
+        resources: []
+      },
+
+      {
         subject: "Satire & Jokes",
         resources: [
           {
