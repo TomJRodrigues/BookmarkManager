@@ -7,3 +7,41 @@ body {
 button{
 	margin:10px;
 }
+
+h1, h6 {
+	text-align:center;
+}
+
+.subjectButton form{
+	width: 290px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .container-small {
+        width: 400px;
+    }
+    .container-large {
+        width: 970px;
+    } 
+} 
+@media (min-width: 992px) {
+    .container-small {
+        width: 640px;
+    }
+    .container-large {
+        width: 1170px;
+    } 
+} 
+@media (min-width: 1200px) {
+    .container-small {
+        width: 920px;
+    }
+    .container-large {
+        width: 1500px;
+    } 
+}
+
+.container-small, .container-large {
+    max-width: 100%;
+}

@@ -33,7 +33,7 @@ class AddSubject extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="subjectButton">
 			  <form htmlFor="subjectButton">
           <input 
             id="subjectButton" 
